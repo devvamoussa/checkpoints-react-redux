@@ -1,17 +1,18 @@
-import React from 'react'
+
 import PostList from '../component/PostList'
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { addPost } from '../js/Action/action';
+import { getPost } from '../js/Action/action';
+import { useSelector } from 'react-redux';
 
 const PostForm = () => {
     const [title, setTitle] = useState('');
     const [contents, setContents] = useState('');
+    const posts = useSelector((state) => state.posts)
     const dispatch = useDispatch()
-    const post = useSelector((state) => state.data)
-    console.log(post)
-    
-    const handleSubmit = (e) =>{
+  
+    const handleSubmit =(e) =>{
         e.preventDefault()
         const data = {
             id: new  Date().getTime(),
@@ -19,11 +20,10 @@ const PostForm = () => {
             contents,
         }
         console.log("title et contents", data)
-        dispatch(addPost(data));
-        setTitle("")
-        setContents("")
-
-
+         dispatch(addPost(data));
+        setTitle("");
+        setContents("");
+        dispatch(getPost());
     } 
 
     return (
@@ -34,8 +34,10 @@ const PostForm = () => {
                 <textarea value={contents} placeholder="Ecrivez vos tache" onChange={e=> setContents(e.target.value)}/>
                 <input type="submit" value="ENVOYER" />
             </form>
-            
-                <PostList post={post} />
+                <div>
+                    {posts.map((post , index) => <PostList  post={post} key={index}/>)} 
+                </div>
+                
             
             
         </div>

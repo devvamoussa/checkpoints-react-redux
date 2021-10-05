@@ -4,8 +4,7 @@ import rootReducers from "../Reducers/add_reducers";
 // import composeWithdevtools from "redux-devtools-extension";
 
 
-
-const store = createStore(rootReducers, 
+const store = createStore(rootReducers
     // composeWithdevtools(applyMiddleware(thunk))
     );
 
