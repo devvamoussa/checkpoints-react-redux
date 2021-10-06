@@ -1,0 +1,50 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 800px;
+    height: auto;
+    margin-top: 20px;
+    border-top: none;
+
+}
+
+.container h1{
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid black;
+    background-color:  #003566;
+}
+
+.container span button{
+    margin: 10px;
+    border-radius: 5px;
+    width: 70px;
+    height: 35px;
+    background-color: #EDF2F4;
+    color: black;
+}
+.btn_content{
+    display: flex;
+    justify-content: flex-end;
+}
+.edit_content{
+    border-radius: 10px;
+    width: 700px;
+    height: auto;
+}
+.content_textarea{
+    display: flex;
+    justify-content: flex-end;
+}
+.btn button{
+    margin-top: 5px;
+    border-radius: 5px;
+    width: 70px;
+    height: 35px;
+    background-color: #EDF2F4;
+    color: black;
+}

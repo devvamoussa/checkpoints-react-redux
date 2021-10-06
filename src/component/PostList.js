@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { editPost } from '../js/Action/action';
+import { editPost, deletePost } from '../js/Action/action';
+import './PostList.css'
 
 
-function PostList(post) {
+function PostList({post}) {
     const [editToggle , setEditToggle] = useState(false);
     const [editContent , setEditContent] = useState(post.contents)
     const dispatch = useDispatch();
@@ -26,20 +27,27 @@ function PostList(post) {
 
     return (
         <div>
-                <div>
+                <div className="container">
                     <h1>{post.title}</h1>
                     
                     {editToggle ? (
-                        <form onSubmit={e => handleEdit(e)}>
-                            <textarea onChange={e => setEditContent(e.target.value)} defaultValue={post.contents}></textarea>
-                            <button>submit</button>
+                        <form  onSubmit={e => handleEdit(e)}>
+                            <div className="content_textarea">
+                                <textarea className='edit_content'onChange={e => setEditContent(e.target.value)} defaultValue={post.contents}></textarea>
+                            </div>
+                            <div className="btn">
+                                <button>submit</button>
+                            </div>
+                            
                         </form>
                     ) : (
-                        <h2>{post.contents}</h2>
+                        <p>{post.contents}</p>
                     )}
-                    
-                    <span><button onClick={()=> setEditToggle(!editToggle)}>E</button></span>
-                    <span><button>X</button></span>
+                    <div className='btn_content'>
+                        <span><button onClick={()=> setEditToggle(!editToggle)}>EDIT</button></span>
+                        <span><button onClick={()=> dispatch(deletePost(post.id))}>DELETE</button></span>
+                    </div>
+                   
                 </div>
             
         </div>
